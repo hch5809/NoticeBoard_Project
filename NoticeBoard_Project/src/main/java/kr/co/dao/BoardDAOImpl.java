@@ -1,6 +1,7 @@
 package kr.co.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -60,4 +61,38 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.delete("boardMapper.delete", bno);
 	}
 	
+	
+	// 첨부파일 업로드
+	@Override
+	public void insertFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.insert("boardMapper.insertFile", map);
+	}
+	
+   	// 첨부파일 조회
+	@Override
+	public List<Map<String, Object>> selectFileList(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardMapper.selectFileList", bno);
+	}
+	
+	// 첨부파일 다운로드
+	@Override
+	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("boardMapper.selectFileInfo", map);
+	}
+	
+	@Override
+	public void updateFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		
+		sqlSession.update("boardMapper.updateFile", map);
+	}
+	
+	@Override
+	public void boardHit(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("boardMapper.boardHit", bno);
+	}
 }
