@@ -58,10 +58,16 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
-	
+		boolean pwdMatch = false;
 		session.getAttribute("member");
 		MemberVO login = service.login(vo);
-		boolean pwdMatch = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
+		
+		//NullPointerException이 발생하기 때문에 null체크 진행
+		if((!"".equals(vo.getUserPass()) && vo.getUserPass() != null) && (!"".equals(login.getUserPass()) && login.getUserPass() != null)) {
+			pwdMatch = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
+		}else {
+			pwdMatch = false;
+		}
 
 		if(login != null && pwdMatch == true) {
 			session.setAttribute("member", login);

@@ -65,17 +65,17 @@
 							<c:if test="${member.userId != null}">
 								<tr>
 									<td>
-										<label for="title">제목</label><input type="text" id="title" name="title" class="chk" title="제목을 입력하세요."/>
+										<label for="title">제목</label><input type="text" id="title" name="title" class="chk form-control" title="제목을 입력하세요."/>
 									</td>
 								</tr>	
 								<tr>
 									<td>
-										<label for="content">내용</label><textarea id="content" name="content" class="chk" title="내용을 입력하세요."></textarea>
+										<label for="content">내용</label><textarea id="content" name="content" class="chk form-control" title="내용을 입력하세요."></textarea>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<label for="writer">작성자</label><input type="text" id="writer" name="writer" class="chk" title="작성자를 입력하세요." value="${member.userId}" />
+										<label for="writer">작성자</label><input type="text" id="writer" name="writer" class="chk form-control" title="작성자를 입력하세요." value="${member.userId}" />
 									</td>
 								</tr>
 								<tr>
@@ -85,8 +85,8 @@
 								</tr>
 								<tr>
 									<td>						
-										<button class="write_btn" type="submit">작성</button>	
-										<button class="fileAdd_btn" type="button">파일추가</button>	
+										<button class="write_btn btn btn-warning" type="submit">작성</button>	
+										<button class="fileAdd_btn btn btn-primary" type="button">파일추가</button>	
 									</td>
 								</tr>	
 							</c:if>
